@@ -16,7 +16,7 @@ func possible(game string, max_red int, max_green int, max_blue int) bool {
 	greens := re_green.FindAllStringSubmatch(game, -1)
 	blues := re_blue.FindAllStringSubmatch(game, -1)
 
-	// Id any match is over max, return false
+	// If any match is over max, return false
 	for _, match := range reds {
 		n, _ := strconv.Atoi(match[1])
 		if n > max_red {
