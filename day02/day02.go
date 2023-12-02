@@ -2,6 +2,7 @@ package main
 
 import (
 	"aoc2023/day02/part1"
+	"aoc2023/day02/part2"
 	"bufio"
 	"fmt"
 	"os"
@@ -16,4 +17,5 @@ func main() {
 	}
 
 	fmt.Println(part1.Solve(lines))
+	fmt.Println(part2.Solve(lines))
 }
