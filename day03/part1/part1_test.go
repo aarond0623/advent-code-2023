@@ -27,6 +27,7 @@ func TestIsPartNumber(t *testing.T) {
 		want  bool
 	}
 
+	// Part number test cases. Should be true if any symbol is adjacent.
 	testCases := []testCase{
 		{row: 0, slice: []int{0, 3}, want: true},
 		{row: 0, slice: []int{5, 8}, want: false},
