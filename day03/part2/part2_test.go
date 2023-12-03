@@ -25,21 +25,21 @@ func TestIsPossibleRatio(t *testing.T) {
 	type testCase struct {
 		row   int
 		slice []int
-		want  []int
+		want  [2]int
 	}
 
 	// Gear ratio test cases. Return true if an asterisk is adjacent
 	testCases := []testCase{
-		{row: 0, slice: []int{0, 3}, want: []int{1, 3}},
-		{row: 0, slice: []int{5, 8}, want: nil},
-		{row: 2, slice: []int{2, 4}, want: []int{1, 3}},
-		{row: 2, slice: []int{6, 9}, want: nil},
-		{row: 4, slice: []int{0, 3}, want: []int{4, 3}},
-		{row: 5, slice: []int{7, 9}, want: nil},
-		{row: 6, slice: []int{2, 5}, want: nil},
-		{row: 7, slice: []int{6, 9}, want: []int{8, 5}},
-		{row: 9, slice: []int{1, 4}, want: nil},
-		{row: 9, slice: []int{5, 8}, want: []int{8, 5}},
+		{row: 0, slice: []int{0, 3}, want: [2]int{1, 3}},
+		{row: 0, slice: []int{5, 8}, want: [2]int{-1, -1}},
+		{row: 2, slice: []int{2, 4}, want: [2]int{1, 3}},
+		{row: 2, slice: []int{6, 9}, want: [2]int{-1, -1}},
+		{row: 4, slice: []int{0, 3}, want: [2]int{4, 3}},
+		{row: 5, slice: []int{7, 9}, want: [2]int{-1, -1}},
+		{row: 6, slice: []int{2, 5}, want: [2]int{-1, -1}},
+		{row: 7, slice: []int{6, 9}, want: [2]int{8, 5}},
+		{row: 9, slice: []int{1, 4}, want: [2]int{-1, -1}},
+		{row: 9, slice: []int{5, 8}, want: [2]int{8, 5}},
 	}
 
 	for _, tc := range testCases {
