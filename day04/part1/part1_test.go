@@ -17,13 +17,13 @@ func TestScore(t *testing.T) {
 	// Scratch card test cases.
 	testCases := []testCase{
 		{
-			winning_numbers: []int{13, 32, 20, 16, 61},
-			card_numbers:    []int{61, 30, 68, 82, 17, 32, 24, 19},
+			winning_numbers: []int{41, 48, 83, 86, 17},
+			card_numbers:    []int{83, 86, 6, 31, 17, 9, 48, 53},
 			want:            8,
 		},
 		{
-			winning_numbers: []int{41, 48, 83, 86, 17},
-			card_numbers:    []int{83, 86, 6, 31, 17, 9, 48, 53},
+			winning_numbers: []int{13, 32, 20, 16, 61},
+			card_numbers:    []int{61, 30, 68, 82, 17, 32, 24, 19},
 			want:            2,
 		},
 		{
@@ -70,7 +70,7 @@ func TestSolve(t *testing.T) {
 	// What we should get if the function works correctly
 	var want int = 13
 	// What we actually get
-	got := part1.Solve(testCase)
+	got := part1.Solve(testCase, 5, 8)
 
 	if want != got {
 		t.Errorf("Solve: want %d, got %d", want, got)
