@@ -56,6 +56,55 @@ func TestCountWins(t *testing.T) {
 	}
 }
 
+func TestSpawnedCards(t *testing.T) {
+	t.Parallel()
+
+	wins := []int{4, 2, 2, 1, 0, 0}
+
+	type testCase struct {
+		cards []int
+		index int
+		want  int
+	}
+
+	/* Scratch card test cases.
+	* Want values were calculated by hand. Here is an example for card 1 showing
+	* what each card spawns
+	1 > (2 > (3 > (4 > (5), 5), 4 > (5)), 3 > (4 > (5), 5), 4 > (5), 5)
+	*/
+	testCases := []testCase{
+		{cards: []int{0, 0, 0, 0, 0, 0}, index: 0, want: 15},
+		{cards: []int{0, 0, 0, 0, 1, 0}, index: 0, want: 15},
+		{cards: []int{0, 0, 0, 2, 1, 0}, index: 0, want: 15},
+		{cards: []int{0, 0, 4, 2, 1, 0}, index: 0, want: 15},
+		{cards: []int{0, 7, 4, 2, 1, 0}, index: 0, want: 15},
+		{cards: []int{15, 7, 4, 2, 1, 0}, index: 0, want: 15},
+		{cards: []int{0, 0, 0, 0, 0, 0}, index: 1, want: 7},
+		{cards: []int{0, 0, 0, 0, 1, 0}, index: 1, want: 7},
+		{cards: []int{0, 0, 0, 2, 1, 0}, index: 1, want: 7},
+		{cards: []int{0, 0, 4, 2, 1, 0}, index: 1, want: 7},
+		{cards: []int{0, 7, 4, 2, 1, 0}, index: 1, want: 7},
+		{cards: []int{0, 0, 0, 0, 0, 0}, index: 2, want: 4},
+		{cards: []int{0, 0, 0, 0, 1, 0}, index: 2, want: 4},
+		{cards: []int{0, 0, 0, 2, 1, 0}, index: 2, want: 4},
+		{cards: []int{0, 0, 4, 2, 1, 0}, index: 2, want: 4},
+		{cards: []int{0, 0, 0, 0, 0, 0}, index: 3, want: 2},
+		{cards: []int{0, 0, 0, 0, 1, 0}, index: 3, want: 2},
+		{cards: []int{0, 0, 0, 2, 1, 0}, index: 3, want: 2},
+		{cards: []int{0, 0, 0, 0, 0, 0}, index: 4, want: 1},
+		{cards: []int{0, 0, 0, 0, 1, 0}, index: 4, want: 1},
+		{cards: []int{0, 0, 0, 0, 0, 0}, index: 5, want: 1},
+		{cards: []int{0, 0, 0, 0, 0, 1}, index: 5, want: 1},
+	}
+
+	for _, tc := range testCases {
+		got := part2.SpawnedCards(wins, tc.cards, tc.index)
+		if tc.want != got {
+			t.Errorf("SpawnedCards(%v, %d): want %d, got %d", tc.cards, tc.index, tc.want, got)
+		}
+	}
+}
+
 func TestSolve(t *testing.T) {
 	t.Parallel()
 
